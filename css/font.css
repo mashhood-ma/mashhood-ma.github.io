@@ -1,0 +1,19 @@
+@font-face {
+    font-family: dana;
+    src: url('../font/DanaFaNum-Regular.woff2');
+}
+
+@font-face {
+    font-family: yekan;
+    src: url('../font/YekanBakhFaNum-Bold.woff2');
+}
+
+@font-face {
+    font-family: morabba;
+    src: url('../font/Morabba-Bold.woff');
+}
+
+@font-face {
+    font-family: peyda;
+    src: url('../font/PeydaWeb-Regular.e1f298caefd1d1727ef6.woff');
+}

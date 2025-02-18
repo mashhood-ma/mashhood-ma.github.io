@@ -1,0 +1,55 @@
+<!DOCTYPE html>  
+<html lang="fa" dir="rtl">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>صفحه ورود</title>  
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <!-- Daisy ui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- manual.css & fonts -->
+     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="css/font.css">
+
+</head>  
+<body class="flex items-center justify-center min-h-screen bg-gray-100">  
+    <div class="flex w-full max-w-xl h-[400px] bg-white shadow-md rounded-lg overflow-hidden">  
+        <!-- بخش فرم ورود -->  
+        <div class="w-1/2 p-8 center flex-col gap-4">  
+            <h2 class="text-2xl text-center mb-4 font-[morabba]">ورود به حساب کاربری</h2>  
+            <form id="student-form">  
+                <div class="mb-4">  
+                    <label for="username" id="name" class="block text-sm font-medium text-gray-700">نام کاربری</label>  
+                    <input type="text" id="username" name="username" required   
+                           class="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-white"/>  
+                </div>  
+                <div class="mb-6">  
+                    <label for="password" class="block text-sm font-medium text-gray-700">رمز عبور</label>  
+                    <input type="password" id="password" name="password" required   
+                           class="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-white"/>  
+                </div>  
+                <button type="submit"    
+                        class="w-full bg-[#87986A] hover:bg-[#4a5b2d] text-white font-semibold py-2 rounded-md">  
+                    <a href="./main/dashboard/index.html" class="font-[peyda]">ورود</a> 
+                </button>  
+            </form>  
+        </div>  
+        <!-- بخش لوگو -->  
+        <div class="flex items-center justify-center w-1/2 bg-blue-500">  
+            <img src="logo.png" alt="لوگو" class="w-3/4 h-auto"/>  
+        </div>
+    </div>  
+
+    <script src="./main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>  
+</html>

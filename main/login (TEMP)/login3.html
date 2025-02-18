@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Toastify.js -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <style>
+        @font-face {
+            font-family: 'dana';
+            src: url('../../font/DanaFaNum-Regular.woff2');
+        }
+
+        /* ریسپانسیو سازی */
+        .form {
+            max-width: 600px; /* حداکثر عرض برای دسکتاپ */
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .otp-container {
+            gap: 12px; /* فاصله بین ورودی‌ها */
+        }
+
+        .otp-input {
+            font-size: 24px; /* اندازه متن پیش‌فرض */
+            border: 2px solid #ddd;
+            transition: all 0.3s ease; /* انیمیشن برای تغییرات */
+        }
+
+        .btn {
+            font-size: 18px; /* اندازه متن دکمه پیش‌فرض */
+            transition: all 0.3s ease; /* انیمیشن برای تغییرات */
+        }
+
+        #resend-otp {
+            font-size: 16px; /* اندازه متن لینک پیش‌فرض */
+            transition: all 0.3s ease; /* انیمیشن برای تغییرات */
+        }
+
+        /* Hide logo until a valid path is provided */
+        img {
+            display: none; /* Remove this line when you add a valid logo path */
+            max-width: 100%; /* Ensure the logo scales properly */
+            height: auto;
+        }
+        /* Default styles for all devices */
+.form {
+    max-width: 600px; /* Maximum width for large screens */
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.otp-input {
+    width: 80px; /* Default width */
+    height: 80px; /* Default height */
+    font-size: 24px; /* Default font size */
+}
+
+.btn {
+    width: 100%; /* Full width */
+    height: 50px; /* Default height */
+    font-size: 18px; /* Default font size */
+}
+
+#resend-otp {
+    font-size: 16px; /* Default font size */
+}
+
+.progress-indicator i {
+    font-size: 18px; /* Default icon size */
+}
+
+/* Responsive styles for small devices (e.g., mobile phones) */
+@media (max-width: 640px) {
+    .form {
+        padding: 16px; /* Reduce padding */
+    }
+
+    .otp-input {
+        width: 60px; /* Reduce width */
+        height: 60px; /* Reduce height */
+        font-size: 20px; /* Reduce font size */
+    }
+
+    .btn {
+        height: 45px; /* Reduce height */
+        font-size: 16px; /* Reduce font size */
+    }
+
+    #resend-otp {
+        font-size: 14px; /* Reduce font size */
+    }
+
+    .progress-indicator i {
+        font-size: 16px; /* Reduce icon size */
+    }
+}
+
+/* Responsive styles for medium devices (e.g., tablets) */
+@media (min-width: 640px) and (max-width: 1024px) {
+    .otp-input {
+        width: 70px; /* Adjust width */
+        height: 70px; /* Adjust height */
+        font-size: 22px; /* Adjust font size */
+    }
+
+    .btn {
+        height: 48px; /* Adjust height */
+        font-size: 17px; /* Adjust font size */
+    }
+
+    #resend-otp {
+        font-size: 15px; /* Adjust font size */
+    }
+
+    .progress-indicator i {
+        font-size: 17px; /* Adjust icon size */
+    }
+}
+
+/* Responsive styles for large devices (e.g., desktops) */
+@media (min-width: 1024px) {
+    .otp-input {
+        width: 100px; /* Increase width */
+        height: 100px; /* Increase height */
+        font-size: 26px; /* Increase font size */
+    }
+
+    .btn {
+        height: 56px; /* Increase height */
+        font-size: 19px; /* Increase font size */
+    }
+
+    #resend-otp {
+        font-size: 18px; /* Increase font size */
+    }
+
+    .progress-indicator i {
+        font-size: 20px; /* Increase icon size */
+    }
+}
+    </style>
+</head>
+<body dir="rtl" class="font-[dana] ">
+    <div class="form box p-6 mx-auto flex flex-col items-center gap-4">
+        <!-- Logo -->
+        <img src="" alt="logo" class="mb-6 w-[150px] h-[150px] rounded-full object-cover">
+
+        <!-- OTP Form -->
+        <form id="otp-form" class="flex flex-col items-center gap-4">
+            <div class="otp-container flex gap-4 mb-6">
+                <input type="text" class="otp-input w-[80px] h-[80px] text-center outline-none rounded-md" maxlength="1" id="otp1" autofocus>
+                <input type="text" class="otp-input w-[80px] h-[80px] text-center outline-none rounded-md" maxlength="1" id="otp2">
+                <input type="text" class="otp-input w-[80px] h-[80px] text-center outline-none rounded-md" maxlength="1" id="otp3">
+                <input type="text" class="otp-input w-[80px] h-[80px] text-center outline-none rounded-md" maxlength="1" id="otp4">
+            </div>
+
+            <button type="submit" 
+                class="w-full py-2 bg-[#729762] text-white rounded-md hover:bg-[#597445] focus:outline-none">
+                تایید کد
+            </button>
+        </form>
+
+        <!-- Resend OTP Link -->
+        <a href="#" id="resend-otp" class="hover:underline text-sm text-blue-500">ارسال مجدد</a>
+
+        <!-- Progress Indicator -->
+        <div class="progress-indicator flex justify-center items-center gap-2 mt-4">
+            <i class="ri-circle-line text-gray-400"></i>
+            <i class="ri-circle-line text-gray-400"></i>
+            <i class="ri-circle-fill text-green-500"></i>
+        </div>
+
+        <!-- Message Display -->
+        <p id="message" class="text-green-500 mt-4 hidden"></p>
+    </div>
+
+    <script src="./login3.js"></script>
+    <script src="../theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+/* دارک مود */
+
+.dark-mode {
+    background-color: #111827;
+    color: rgb(255, 255, 255);
+}
+
+/* آیتم های خدمات */
+
+.works-menu {
+    height: 180px;
+    width: 180px;
+    background: white;
+    border-radius: 30px;
+    border: .4px rgba(0, 0, 0, 0.501) solid;
+    gap: 12px;
+    transition: all .3s ease;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parent-works i {
+    color: black;
+    font-size: 32px;
+}
+
+.parent-works p {
+    color: black;
+    font-size: 20px;
+}
+
+/* هاور روی آیتم ها */
+
+.parent-works i,p {
+    transition: all .3s ease;
+}
+
+.parent-works i:hover {
+    color: #87986A;
+}
+
+/* .parent-works p:hover {
+    color: #87986A;
+} */

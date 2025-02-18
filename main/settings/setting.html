@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تنظیمات حساب</title>
+    
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        @font-face {
+            font-family: 'dana';
+            src: url('../../font/DanaFaNum-Regular.woff2');
+        }
+
+        body {
+            font-family: 'dana', sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* رنگ‌های دکمه‌ها */
+        .btn-primary {
+            background-color: #87986A;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #6B7B3E;
+        }
+
+        .btn-success {
+            background-color: #6B7B3E;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #87986A;
+        }
+
+        /* دارک مود */
+        .dark-mode {
+            background-color: #111827;
+            color: white !important;
+        }
+
+        .dark-mode .card {
+            background-color: #1f2937;
+            color: white;
+        }
+
+        .dark-mode input, .dark-mode button {
+            background-color: #374151;
+            color: white;
+            border-color: #4a5568;
+        }
+    </style>
+</head>
+<body dir="rtl" class="flex flex-col items-center min-h-screen p-6 bg-gray-100 transition-colors">
+
+    <!-- دکمه تغییر تم -->
+    <!-- <button id="toggleDarkMode" class="btn-primary px-4 py-2 rounded-md transition absolute top-4 left-4">
+        تغییر تم
+    </button> -->
+
+    <!-- کارت تنظیمات -->
+    <div class="card bg-white p-6 rounded-lg shadow-lg w-full max-w-lg mt-12 transition-colors">
+        <h2 class="text-xl font-semibold text-gray-800 text-center mb-4">تنظیمات حساب</h2>
+
+        <!-- بخش پروفایل -->
+        <div class="flex flex-col items-center gap-4">
+            <img id="profileImage" src="http://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.webp" alt="پروفایل" class="profile-img outline outline-offset-2 outline-[#87986A]">
+            <input type="file" id="profileInput" class="hidden" accept="image/*">
+            <button id="changeProfileBtn" class="btn-primary px-4 py-2 rounded-md transition">
+                تغییر عکس
+            </button>
+        </div>
+
+        <!-- فرم اطلاعات -->
+        <form id="settingsForm" class="mt-6 flex flex-col gap-4">
+            <div>
+                <label class="block text-gray-700">نام کامل:</label>
+                <input type="text" id="fullName" class="w-full px-3 py-2 border outline-none rounded-md focus:ring-2 focus:ring-[#87986A]">
+            </div>
+
+            <div>
+                <label class="block text-gray-700">ایمیل:</label>
+                <input type="email" id="email" class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-[#87986A] outline-none">
+            </div>
+
+            <div>
+                <label class="block text-gray-700">شماره تماس:</label>
+                <input type="tel" id="phoneNumber" class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-[#87986A] outline-none">
+            </div>
+
+            <div>
+                <label class="block text-gray-700">کد ملی:</label>
+                <input type="text" id="nationalCode" class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-[#87986A] outline-none">
+            </div>
+
+            <button type="submit" class="btn-success px-4 py-2 rounded-md transition dark:bg-[#87986A]">
+                ذخیره تغییرات
+            </button>
+        </form>
+
+        <!-- تغییر رمز عبور -->
+        <div class="mt-6 text-center">
+            <button id="changePasswordBtn" class="btn-success px-4 py-2 rounded-md overflow-x-hidden transition w-full">
+                تغییر رمز عبور
+            </button>
+        </div>
+    </div>
+
+    <script src="./setting.js"></script>
+</body>
+</html>

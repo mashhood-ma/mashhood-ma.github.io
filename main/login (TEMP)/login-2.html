@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Toastify.js -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <style>
+        @font-face {
+            font-family: dana;
+            src: url('../../font/DanaFaNum-Regular.woff2');
+        }
+
+        body {
+            font-family: 'dana', sans-serif;
+            direction: rtl;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px; /* حداکثر عرض برای دستگاه‌های بزرگ */
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        input, button {
+            border-radius: 8px;
+            font-family: 'dana', sans-serif;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .progress-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        /* Hide the logo image until we have a valid path */
+        img {
+            display: none; /* Remove this line when you add a valid logo path */
+            max-width: 100%; /* Ensure the logo scales properly */
+            height: auto;
+        }
+    /* Default styles for all devices */
+    .container {
+        max-width: 600px; /* Maximum width for large screens */
+        margin: 50px auto;
+        padding: 20px;
+    }
+
+    input, button {
+        height: 50px; /* Default height */
+        font-size: 16px; /* Default font size */
+    }
+
+    label {
+        font-size: 14px; /* Default label font size */
+    }
+
+    /* Responsive styles for small devices (e.g., mobile phones) */
+    @media (max-width: 640px) {
+        .container {
+            padding: 16px; /* Reduce padding for smaller screens */
+        }
+
+        input, button {
+            height: 40px; /* Reduce height */
+            font-size: 14px; /* Reduce font size */
+        }
+
+        label {
+            font-size: 12px; /* Reduce label font size */
+        }
+
+        .progress-indicator i {
+            font-size: 16px; /* Reduce icon size */
+        }
+    }
+
+    /* Responsive styles for medium devices (e.g., tablets) */
+    @media (min-width: 640px) and (max-width: 1024px) {
+        input, button {
+            height: 48px; /* Adjust height for medium screens */
+            font-size: 16px; /* Adjust font size */
+        }
+
+        label {
+            font-size: 14px; /* Adjust label font size */
+        }
+
+        .progress-indicator i {
+            font-size: 18px; /* Adjust icon size */
+        }
+    }
+
+    /* Responsive styles for large devices (e.g., desktops) */
+    @media (min-width: 1024px) {
+        input, button {
+            height: 56px; /* Increase height for larger screens */
+            font-size: 18px; /* Increase font size */
+        }
+
+        label {
+            font-size: 16px; /* Increase label font size */
+        }
+
+        .progress-indicator i {
+            font-size: 20px; /* Increase icon size */
+        }
+    }
+    </style>
+</head>
+<body dir="rtl" class="font-['dana']">
+    <div class="container box p-6 mx-auto">
+        <!-- Logo -->
+        <img src="" alt="logo" class="mx-auto mb-6" style="max-width: 150px; display: block;">
+
+        <!-- Phone Form -->
+        <form id="phone-form" class="space-y-4">
+            <label for="phone" class="text-sm font-medium">شماره تماس:</label>
+            <input type="text" id="phone" name="phone" 
+                class="w-full px-3 py-2 rounded bg-gray-50 focus:outline-none" required>
+
+            <button type="submit" 
+                class="w-full py-2 bg-[#729762] text-white rounded hover:bg-[#597445] focus:outline-none">
+                ارسال کد
+            </button>
+
+            <!-- Message Display -->
+            <p id="message" class="text-green-500 mt-2 hidden"></p>
+        </form>
+
+        <!-- Progress Indicator -->
+        <div class="progress-indicator text-sm">
+            <i class="ri-circle-line text-gray-400"></i>
+            <i class="ri-circle-fill text-green-500"></i>
+            <i class="ri-circle-line text-gray-400"></i>
+        </div>
+    </div>
+
+    <script src="./login-2.js"></script>
+    <script src="../theme.js"></script>
+</body>
+</html>
