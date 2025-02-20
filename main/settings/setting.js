@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("userData", JSON.stringify(userData));
 
         Swal.fire("موفق!", "اطلاعات با موفقیت ذخیره شد.", "success");
+        setTimeout(() => {
+        window.location.href = '../dashboard/index.html'
+        }, 2000);
     });
 
     // تغییر عکس پروفایل و ذخیره در localStorage
@@ -45,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const updatedData = JSON.parse(localStorage.getItem("userData")) || {};
                 updatedData.profileImage = e.target.result;
                 localStorage.setItem("userData", JSON.stringify(updatedData));
-                
+
                 Swal.fire("موفق!", "عکس پروفایل تغییر کرد و ذخیره شد.", "success");
             };
             reader.readAsDataURL(file);
@@ -100,4 +103,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-console.log('hi')
+// console.log('hi')
