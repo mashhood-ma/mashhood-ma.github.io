@@ -18,8 +18,10 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- manual.css -->
+    <!-- Manual.css -->
     <link rel="stylesheet" href="css/manual.css">
+    <!-- aos library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <style>
         @font-face {
@@ -468,8 +470,8 @@
                 </ul>
             </div>
             <a href="../../index.html">
-                <button
-                    class="bg-white text-[#87986A] px-4 py-2 rounded-md shadow-md flex flex-row-reverse items-center gap-2 hover:bg-[#6B7B3E] hover:text-white duration-300">
+                <button data-aos="fade-right" data-aos-duration="1500"
+                    class="bg-white text-[#87986A] px-4 py-2 rounded-md shadow-md flex flex-row-reverse items-center gap-2 hover:bg-[#6B7B3E] hover:text-white hover:duration-500">
                     <i class="ri-logout-box-r-line text-base"></i>
                     خروج
                 </button>
@@ -486,7 +488,7 @@
 
     <div class="flex flex-row gap-6 p-6 pt-20 flex-grow ">
         <!-- سایدبار -->
-        <aside class="flex flex-col items-center gap-4 w-20 bg-[#87986A] text-white p-4 rounded-2xl">
+        <aside  data-aos="fade-left" data-aos-duration="1500" class="flex flex-col items-center gap-4 w-20 bg-[#87986A] text-white p-4 rounded-2xl">
             <div
                 class="bg-white w-12 h-12 rounded-full flex items-center justify-center hover:-translate-y-2 duration-300">
                 <i class="ri-dashboard-fill text-[#87986A] text-2xl"></i>
@@ -508,9 +510,9 @@
         </aside>
 
         <!-- محتوای اصلی -->
-        <main class="flex flex-col gap-4 flex-grow">
+        <main  class="flex flex-col gap-4 flex-grow">
             <!-- داشبورد کلی -->
-            <section class="bg-white p-6 rounded-2xl shadow-md flex justify-between items-center opacity-90 text-right">
+            <section data-aos="fade-down" data-aos-duration="1500" class="bg-white p-6 rounded-2xl shadow-md flex justify-between items-center opacity-90 text-right">
                 <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
                     <i class="ri-bar-chart-box-line text-lg"></i> داشبورد کلی
                 </h2>
@@ -520,7 +522,7 @@
             <!-- نمودارها -->
             <section class="charts-wrapper flex gap-6 justify-center">
                 <!-- نمودار ستونی مقایسه کلاس‌ها -->
-                <div class="chart-container bg-white p-6 rounded-2xl shadow-md opacity-90 text-right">
+                <div  data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom" class="chart-container bg-white p-6 rounded-2xl shadow-md opacity-90 text-right">
                     <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
                         <i class="ri-bar-chart-box-line text-lg"></i> نمودار مقایسه کلاس‌ها
                     </h2>
@@ -528,7 +530,7 @@
                 </div>
 
                 <!-- نمودار خطی دروس مختلف -->
-                <div class="chart-container bg-white p-6 rounded-2xl shadow-md opacity-90 text-right">
+                <div data-aos="fade-up" data-aos-duration="1000" class="chart-container bg-white p-6 rounded-2xl shadow-md opacity-90 text-right">
                     <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
                         <i class="ri-line-chart-line text-lg"></i> نمودار دروس مختلف
                     </h2>
@@ -544,7 +546,7 @@
                 </div>
             </div>
 
-            <table id="studentTable" class="divide-y divide-gray-200 flex-wrap">
+            <table  data-aos="zoom-in" data-aos-duration="1500" id="studentTable" class="divide-y divide-gray-200 flex-wrap">
                 <thead class="bg-gray-50 ">
                     <tr class="">
                         <th scope="col"
@@ -569,19 +571,19 @@
             </table>
             <h2 class="text-2xl font-bold mb-4">ثبت اطلاعات دانش‌آموز</h2>
             <form id="studentForm" class="space-y-4">
-                <div>
+                <div  data-aos="fade-up" data-aos-duration="1000">
                     <label for="name" class="block text-sm font-medium text-gray-700">نام:</label>
                     <input type="text" id="name" name="name" required
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#87986A] focus:border-[#87986A] sm:text-sm">
                 </div>
 
-                <div>
+                <div data-aos="fade-up" data-aos-duration="1500">
                     <label for="class" class="block text-sm font-medium text-gray-700">نام کلاس:</label>
                     <input type="text" id="class" name="class" required
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#87986A] focus:border-[#87986A] sm:text-sm">
                 </div>
 
-                <div>
+                <div data-aos="fade-up" data-aos-duration="2000">
                     <label for="nationalCode" class="block text-sm font-medium text-gray-700">کد ملی:</label>
                     <input type="text" id="nationalCode" name="nationalCode" required
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#87986A] focus:border-[#87986A] sm:text-sm">
@@ -590,17 +592,17 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700">نمرات در دروس:</label>
                     <div class="space-y-2">
-                        <div>
+                        <div data-aos="fade-up" data-aos-duration="1500">
                             <label for="mathScore" class="block text-sm font-medium text-gray-700">ریاضی:</label>
                             <input type="number" id="mathScore" name="mathScore" min="0" max="20"
                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#87986A] focus:border-[#87986A] sm:text-sm">
                         </div>
-                        <div>
+                        <div data-aos="fade-up" data-aos-duration="2000">
                             <label for="physicsScore" class="block text-sm font-medium text-gray-700">فیزیک:</label>
                             <input type="number" id="physicsScore" name="physicsScore" min="0" max="20"
                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#87986A] focus:border-[#87986A] sm:text-sm">
                         </div>
-                        <div>
+                        <div data-aos="fade-up" data-aos-duration="2500">
                             <label for="chemistryScore" class="block text-sm font-medium text-gray-700">شیمی:</label>
                             <input type="number" id="chemistryScore" name="chemistryScore" min="0" max="20"
                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#87986A] focus:border-[#87986A] sm:text-sm">
@@ -608,13 +610,13 @@
                     </div>
                 </div>
 
-                <div>
+                <div  data-aos="fade-up" data-aos-duration="3000">
                     <label for="date" class="block text-sm font-medium text-gray-700">تاریخ:</label>
                     <input type="date" id="date" name="date" required
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#87986A] focus:border-[#87986A] sm:text-sm">
                 </div>
 
-                <button type="submit"
+                <button
                     class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#87986A] hover:bg-[#6B7B3E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     افزودن دانش‌آموز
                 </button>
@@ -639,21 +641,21 @@
         <h3 class="font-bold text-xl w-full text-center inline-flex justify-center items-center">خدمات</h3>
         <div class="parent-works flex justify-center items-center flex-row gap-12 flex-wrap">
             <a href="../works/classes/index.html">
-                <div class="works-menu center flex-col">
+                <div class="works-menu center flex-col hover:scale-105 hover:outline hover:outline-2 hover:outline-offset-4 hover:outline-[#384324]">
                     <i class="ri-sound-module-line"></i>
                     <p>مدیریت کلاس ها</p>
                 </div>
             </a>
 
-            <div class="works-menu center flex-col">
+            <div class="works-menu center flex-col hover:scale-105 hover:outline hover:outline-2 hover:outline-offset-4 hover:outline-[#384324]">
                 <!-- <i class="ri-file-reduce-fill"></i> -->
                 <p>بزودی</p>
             </div>
-            <div class="works-menu center flex-col">
+            <div class="works-menu center flex-col hover:scale-105 hover:outline hover:outline-2 hover:outline-offset-4 hover:outline-[#384324]">
                 <!-- <i class="ri-user-add-fill"></i> -->
                 <p>بزودی</p>
             </div>
-            <div class="works-menu center flex-col">
+            <div class="works-menu center flex-col hover:scale-105 hover:outline hover:outline-2 hover:outline-offset-4 hover:outline-[#384324]">
                 <!-- <i class="ri-user-unfollow-fill"></i> -->
                 <p>بزودی</p>
             </div>
@@ -661,6 +663,10 @@
     </footer>
 
     <script src="./js/script.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
 </body>
 
 </html>

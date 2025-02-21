@@ -1,3 +1,5 @@
+const { text } = require("body-parser");
+
 const form = document.getElementById('student-form');
 
 form.addEventListener('submit', function (event) {
@@ -9,7 +11,8 @@ form.addEventListener('submit', function (event) {
     // ذخیره اطلاعات در localStorage
     const studentData = {
         name: name,
-        password: password
+        password: password,
+        part: selectElement,
     };
 
      // بررسی وضعیت لاگین
@@ -73,3 +76,26 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('password').value = studentData.password;
     }
 });
+
+function redirectUser(event) {
+    event.preventDefault();
+
+    const selectElement = document.getElementById('part');
+    const selectedValue = selectElement.value;
+
+    if (selectedValue === 'student') {
+        window.location.href = './main/studentDashboard/index.html'
+    }
+    else if (selectedValue === 'teacher') {
+        window.location.href = './main/dashboard/index.html'
+    }
+    else {
+        Toastify({
+            text: 'لطفا نقش خود را انتخاب کنید! ❌',
+            duration: 5000,
+            gravity: 'top',
+            position: 'right',
+            backgroundColor: 'red'
+        }).showToast();
+    }
+}

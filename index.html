@@ -28,7 +28,7 @@
             <h2 class="text-2xl text-center mb-4 font-[morabba]">ورود به حساب کاربری</h2>  
             <form id="student-form">  
                 <div class="mb-4">  
-                    <label for="username" id="name" class="block text-sm font-medium text-gray-700">نام کاربری</label>  
+                    <label for="username" id="name" class="block text-sm font-medium text-gray-700"> نام و نام خانوادگی</label>  
                     <input type="text" id="username" name="username" required   
                            class="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-white"/>  
                 </div>  
@@ -36,10 +36,18 @@
                     <label for="password" class="block text-sm font-medium text-gray-700">رمز عبور</label>  
                     <input type="password" id="password" name="password" required   
                            class="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-white"/>  
+                </div>
+                <div class="mb-6">
+                    <label for="part" class="block text-sm font-medium text-gray-700">نقش</label>
+                    <select onchange="redirectUser()" name="part" id="part" class="mt-1 w-full p-2 border border-gray-300 rounded-md bg-white" required>
+                        <option value="selected" hidden selected></option>
+                        <option value="teacher">آموزگار</option>
+                        <option value="student">دانش آموز</option>
+                    </select>
                 </div>  
-                <button type="submit"    
+                <button type="submit" onclick="redirectUser(event)"    
                         class="w-full bg-[#87986A] hover:bg-[#4a5b2d] text-white font-semibold py-2 rounded-md">  
-                    <a href="./main/dashboard/index.html" class="font-[peyda]">ورود</a> 
+                    <a href="" class="font-[peyda]">ورود</a> 
                 </button>  
             </form>  
         </div>  

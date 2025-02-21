@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد دانش‌آموز</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+
+    <style>
+        @font-face {
+            font-family: 'dana';
+            src: url('../../font/DanaFaNum-Regular.woff2');
+        }
+
+        .btn-submit:hover {
+            background-color: #6B7B3E;
+            color: white;
+        }
+
+        table th, table td {
+            border-radius: 8px;
+        }
+
+        footer input, footer textarea {
+            padding: 8px;
+            margin-bottom: 8px;
+        }
+
+        footer .form-group {
+            margin-bottom: 8px;
+        }
+
+        /* ریسپانسیو نمودار */
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* برای موبایل */
+        @media (max-width: 768px) {
+            .charts-wrapper {
+                flex-direction: column;
+            }
+        }
+        @media (max-width:680px) {
+            aside {
+                display: none !important;
+            }
+        }
+        @media (max-width: 500px) {
+            .chart-container {
+                width: 98%;
+                /* عرض کامل نمودار در صفحه‌های کوچک */
+                height: 200px;
+                /* ارتفاع بیشتر */
+            }
+            #barChart,#lineChart {
+                height: 80% !important;
+            }
+            aside {
+                display: none !important;
+            }
+            table {
+                display: flex;
+            }
+            tr {
+                display: flex;
+                flex-direction: column;
+                width: fit-content !important;  
+            }
+            thead {
+                display: flex;
+                gap: 20px;
+            }
+            tbody {
+                display: flex;
+            }
+            td {
+                display: flex;
+                flex-direction: column;
+                width: fit-content !important;
+            }
+            th {
+                width: 70px;
+                height: 57px;
+            }
+
+        }
+
+        /* برای صفحات با عرض کمتر از 350px */
+        @media (max-width: 350px) {
+            .charts-wrapper {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body dir="rtl" class="bg-[#F0EBE3] font-['dana'] flex flex-col min-h-screen">
+
+    <!-- هدر -->
+    <header class="bg-[#87986A] text-white p-4 flex justify-between items-center fixed top-0 w-full shadow-md z-10">
+        <div class="flex items-center gap-3">
+            <h1 class="text-lg font-semibold flex items-center gap-2">
+                داشبورد دانش‌آموز
+            </h1>
+        </div>
+        <div class="flex items-center gap-3">
+           
+            <button class="bg-white text-[#6B7B3E] hover:bg-[#87986A] hover:text-white duration-200 px-4 py-2 rounded-md shadow-md">خروج</button>
+        </div>
+    </header>
+    
+
+    <div class="flex flex-row-reverse gap-6 p-6 pt-20 flex-grow">
+        
+
+        <!-- محتوای اصلی -->
+        <main class="flex flex-col gap-4 flex-grow">
+            
+            <!-- اطلاعات فردی -->
+            <div class="w-full flex flex-row justify-between gap-6">
+                <section class="bg-white w-11/12  p-6 rounded-2xl shadow-md text-right">
+                <h2 class="text-lg font-semibold text-gray-900">اطلاعات فردی</h2>
+                <table class="min-w-full mt-4 text-right">
+                    <tr>
+                        <td class="border p-2">نام:</td>
+                        <td class="border p-2" id="student-name-info"> مشهود محمودی</td>
+                    </tr>
+                    <tr>
+                        <td class="border p-2">کلاس:</td>
+                        <td class="border p-2"> نهم 2</td>
+                    </tr>
+                    <tr>
+                        <td class="border p-2"> کد ملی:</td>
+                        <td class="border p-2">123456789</td>
+                    </tr>
+                </table>
+                
+            </section>
+             <!-- داشبورد کلی -->
+             <a href="../settings/setting.html" class="bg-white w-1/5 p-6 rounded-2xl shadow-md flex justify-center items-center opacity-90">
+                <section class="w-full h-full flex flex-col justify-evenly items-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/194/194931.png" class="w-[60px] cursor-pointer rounded-full" alt="پروفایل">
+
+                <h5 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                    مشهود محمودی
+                </h5>
+                <p class="text-gray-500 text-sm">دانش آموز پایه نهم</p>
+                <p class="text-gray-500 text-xs">آخرین ورود 3 ساعت قبل</p>
+            </section>
+            </a>
+        </div>
+            
+
+            <!-- نمرات -->
+            <section class="charts-wrapper flex gap-6 justify-center">
+                <!-- نمودار نمرات -->
+                <div class="chart-container bg-white p-6 rounded-2xl shadow-md opacity-90 text-right w-1/2 sm:w-1/2">
+                    <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                        نمرات دروس
+                    </h2>
+                    <canvas id="barChart"></canvas>
+                </div>
+
+                <!-- نمودار پیشرفت -->
+                <div class="chart-container bg-white p-6 rounded-2xl shadow-md opacity-90 text-right w-1/2 sm:w-1/2">
+                    <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                        پیشرفت دروس
+                    </h2>
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </section>
+
+            <!-- حضور و غیاب -->
+            <section class="bg-white p-6 rounded-2xl shadow-md text-right">
+                <h2 class="text-lg font-semibold text-gray-900">حضور و غیاب</h2>
+                <table class="min-w-full mt-4 text-right">
+                    <tr>
+                        <td class="border p-2">تعداد جلسات حضور:</td>
+                        <td class="border p-2">8</td>
+                    </tr>
+                    <tr>
+                        <td class="border p-2">تعداد جلسات غیبت:</td>
+                        <td class="border p-2">2</td>
+                    </tr>
+                </table>
+            </section>
+        </main>
+         <!-- سایدبار -->
+         <aside class="flex flex-col items-center gap-4 w-20 bg-[#87986A] text-white p-4 rounded-2xl">
+            <div
+                class="bg-white w-12 h-12 rounded-full flex items-center justify-center hover:-translate-y-2 duration-300">
+                <i class="ri-dashboard-fill text-[#87986A] text-2xl"></i>
+            </div>
+            <nav class="flex flex-col gap-4">
+                <a href="#"
+                    class="p-2 bg-white text-[#87986A]  hover:-translate-y-2 duration-300 rounded-md shadow-md flex items-center justify-center">
+                    <i class="ri-home-2-line text-xl"></i>
+                </a>
+                <a href="../settings/setting.html"
+                    class="p-2 bg-white  hover:-translate-y-2 duration-300 text-[#87986A] rounded-md shadow-md flex items-center justify-center">
+                    <i class="ri-settings-4-line text-xl"></i>
+                </a>
+                <a href="#"
+                    class="p-2 bg-white  hover:-translate-y-2 duration-300 text-[#87986A] rounded-md shadow-md flex items-center justify-center">
+                    <i class="ri-file-list-3-line text-xl"></i>
+                </a>
+            </nav>
+        </aside>
+    </div>
+
+    
+
+    <script src="./js/script.j"></script>
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./script.js"></script>
+
+    
+
+</body>
+</html>
