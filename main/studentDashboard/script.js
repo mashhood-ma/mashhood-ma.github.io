@@ -68,3 +68,25 @@
                 }
             }
         });
+        document.addEventListener("DOMContentLoaded", function() {
+            const progressBar = document.getElementById("loadingProgress");
+            const loadingScreen = document.getElementById("loadingScreen");
+        
+            // نمایش نوار پیشرفت به تدریج
+            let width = 0;
+            const progressInterval = setInterval(() => {
+                width += 5;
+                progressBar.style.width = width + "%";
+                if (width >= 100) {
+                    clearInterval(progressInterval);
+                }
+            }, 10); // افزایش تدریجی عرض
+        
+            // حذف صفحه لودینگ بعد از 3 ثانیه
+            setTimeout(() => {
+                loadingScreen.style.opacity = "0";
+                setTimeout(() => {
+                    loadingScreen.style.display = "none";
+                }, 500); // صبر برای انیمیشن محو شدن
+            }, 3600);
+        });

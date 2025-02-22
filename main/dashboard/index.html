@@ -445,6 +445,34 @@
                 display: none !important;
             }
         }
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .loading-bar {
+            width: 80%;
+            max-width: 400px;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .loading-progress {
+            height: 100%;
+            width: 0;
+            background: #87986A;
+            transition: width 3s linear;
+        }
     </style>
 </head>
 
@@ -516,7 +544,7 @@
                 <h2 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
                     <i class="ri-bar-chart-box-line text-lg"></i> داشبورد کلی
                 </h2>
-                <p class="text-gray-500">امروز: 1402/11/15</p>
+                <p class="Date text-gray-500">امروز: 1402/11/15</p>
             </section>
 
             <!-- نمودارها -->
@@ -661,6 +689,12 @@
             </div>
         </div>
     </footer>
+    <div class="loading-screen" id="loadingScreen">
+        <h2>  در حال آماده سازی...</h2>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+    </div>
 
     <script src="./js/script.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

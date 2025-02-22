@@ -320,34 +320,44 @@ document.addEventListener("DOMContentLoaded", function () {
     updateStudentTable();
 });
 
-// حالت دارک و لایت تم
 
-const darkModeBtn = document.getElementById("themee");
 
-const currentTheme = localStorage.getItem("theme");
-    if (currentTheme === "dark") {
-        document.body.classList.add("dark-mode");
-    }
-
-    darkModeBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+    document.addEventListener("DOMContentLoaded", function() {
+        const progressBar = document.getElementById("loadingProgress");
+        const loadingScreen = document.getElementById("loadingScreen");
+    
+        // نمایش نوار پیشرفت به تدریج
+        let width = 0;
+        const progressInterval = setInterval(() => {
+            width += 5;
+            progressBar.style.width = width + "%";
+            if (width >= 100) {
+                clearInterval(progressInterval);
+            }
+        }, 10); // افزایش تدریجی عرض
+    
+        // حذف صفحه لودینگ بعد از 3 ثانیه
+        setTimeout(() => {
+            loadingScreen.style.opacity = "0";
+            setTimeout(() => {
+                loadingScreen.style.display = "none";
+            }, 500); // صبر برای انیمیشن محو شدن
+        }, 3600);
     });
-
-    // document.addEventListener("DOMContentLoaded", function () {
-    //     // بررسی وضعیت لاگین
-    //     if (localStorage.getItem("isLoggedIn") !== "true") {
-    //         // اگر کاربر لاگین نکرده باشد، به صفحه لاگین هدایت می‌شود
-    //         window.location.href = "./login.html";
-    //     }
     
-    //     // رویداد خروج از حساب
-    //     document.getElementById("logout-btn").addEventListener("click", function () {
-    //         // حذف وضعیت لاگین از Local Storage
-    //         localStorage.removeItem("isLoggedIn");
+    document.addEventListener("DOMContentLoaded", function () {
+        const dateElement = document.querySelector(".Date");
     
-    //         // هدایت به صفحه لاگین
-    //         window.location.href = "./login.html";
-    //     });
-    // });
+        if (dateElement) {
+            const today = new Date();
+            const persianDate = today.toLocaleDateString("fa-IR", {
+                year: "numeric",    
+                month: "long",
+                day: "numeric"
+            });
+    
+            dateElement.textContent = `امروز: ${persianDate}`;
+        }
+    });
+    
     
