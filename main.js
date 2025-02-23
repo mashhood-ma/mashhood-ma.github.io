@@ -49,7 +49,7 @@ form.addEventListener('submit', function (event) {
         // ⏳ یک تأخیر ۳ ثانیه‌ای برای نمایش Toastify و بعد ریدایرکت
         setTimeout(() => {
             window.location.href = './main/dashboard/index.html';
-        }, 3000);
+        }, 4000);
 
         form.reset(); 
     })

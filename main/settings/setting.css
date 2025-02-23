@@ -69,3 +69,23 @@
     transition-delay: 200ms;
     transform: scale(1) rotate(360deg);
   }
+  .custom-confirm-button {
+    background-color: #87986A !important;
+    color: white !important;
+    border-radius: 5px !important;
+    padding: 8px 16px !important;
+    font-size: 16px !important;
+}
+
+.custom-confirm-button:hover {
+    background-color: #6B7B3E !important;
+}
+
+.custom-cancel-button {
+    background-color: #d9534f !important; /* رنگ قرمز برای دکمه لغو */
+    color: white !important;
+}
+
+.custom-cancel-button:hover {
+    background-color: #c9302c !important;
+}

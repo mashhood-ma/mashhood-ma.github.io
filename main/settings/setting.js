@@ -1,43 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
     const savedData = JSON.parse(localStorage.getItem("userData")) || {};
-    const savedPassword = localStorage.getItem("userPassword") || "";
-    const profileInput = document.getElementById('profileInput')
-
+    const profileImage = document.getElementById("profileImage");
+    const profileInput = document.getElementById("profileInput");
+    const changeProfileBtn = document.getElementById("changeProfileBtn");
+    const settingsForm = document.getElementById("settingsForm");
+    const changePasswordBtn = document.getElementById("changePasswordBtn");
 
     // مقداردهی اولیه به فیلدها (در صورت وجود اطلاعات ذخیره‌شده)
     document.getElementById("fullName").value = savedData.fullName || "";
     document.getElementById("email").value = savedData.email || "";
     document.getElementById("phoneNumber").value = savedData.phoneNumber || "";
     document.getElementById("nationalCode").value = savedData.nationalCode || "";
-    
+
     // مقداردهی عکس پروفایل (در صورت وجود)
     if (savedData.profileImage) {
         profileImage.src = savedData.profileImage;
     }
 
-    // ذخیره اطلاعات هنگام ارسال فرم
-    settingsForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const userData = {
-            fullName: document.getElementById("fullName").value,
-            email: document.getElementById("email").value,
-            phoneNumber: document.getElementById("phoneNumber").value,
-            nationalCode: document.getElementById("nationalCode").value,
-            profileImage: profileImage.src, // ذخیره عکس پروفایل
-        };
-
-        localStorage.setItem("userData", JSON.stringify(userData));
-
-        Swal.fire("موفق!", "اطلاعات با موفقیت ذخیره شد.", "success");
-        setTimeout(() => {
-        window.location.href = '../dashboard/index.html'
-        }, 2000);
+    // وقتی روی دکمه "تغییر عکس" کلیک شد، انتخابگر فایل باز شود
+    changeProfileBtn.addEventListener("click", () => {
+        profileInput.click();
     });
 
     // تغییر عکس پروفایل و ذخیره در localStorage
     profileInput.addEventListener("change", (event) => {
-        
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
@@ -49,10 +35,48 @@ document.addEventListener("DOMContentLoaded", () => {
                 updatedData.profileImage = e.target.result;
                 localStorage.setItem("userData", JSON.stringify(updatedData));
 
-                Swal.fire("موفق!", "عکس پروفایل تغییر کرد و ذخیره شد.", "success");
+                // نمایش SweetAlert فقط هنگام تغییر عکس
+                Swal.fire({
+                    title: "موفق!",
+                    text: "عکس پروفایل تغییر کرد و ذخیره شد.",
+                    icon: "success",
+                    confirmButtonText: "باشه",
+                    customClass: {
+                        confirmButton: "custom-confirm-button"
+                    }
+                });
             };
             reader.readAsDataURL(file);
         }
+    });
+
+    // ذخیره اطلاعات هنگام ارسال فرم
+    settingsForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const userData = {
+            fullName: document.getElementById("fullName").value,
+            email: document.getElementById("email").value,
+            phoneNumber: document.getElementById("phoneNumber").value,
+            nationalCode: document.getElementById("nationalCode").value,
+            profileImage: profileImage.src,
+        };
+
+        localStorage.setItem("userData", JSON.stringify(userData));
+
+        Swal.fire({
+            title: "موفق!",
+            text: "اطلاعات با موفقیت ذخیره شد.",
+            icon: "success",
+            confirmButtonText: "باشه",
+            customClass: {
+                confirmButton: "custom-confirm-button"
+            }
+        });
+
+        setTimeout(() => {
+            window.location.href = '../dashboard/index.html';
+        }, 2000);
     });
 
     // تغییر رمز عبور
@@ -72,7 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
             cancelButtonText: "لغو",
             width: "400px",
             customClass: {
-                popup: "overflow-hidden",
+                confirmButton: "custom-confirm-button",
+                cancelButton: "custom-cancel-button"
             },
             preConfirm: () => {
                 const newPassword = Swal.getPopup().querySelector("#newPassword").value;
@@ -98,9 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire("موفق!", "رمز عبور تغییر کرد و ذخیره شد!", "success");
+                Swal.fire({
+                    title: "موفق!",
+                    text: "رمز عبور تغییر کرد و ذخیره شد!",
+                    icon: "success",
+                    confirmButtonText: "باشه",
+                    customClass: {
+                        confirmButton: "custom-confirm-button"
+                    }
+                });
             }
         });
     });
 });
-// console.log('hi')

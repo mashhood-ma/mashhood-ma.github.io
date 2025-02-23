@@ -19,13 +19,16 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
 
     <!-- manual.css & fonts -->
-     <link rel="stylesheet" href="style.css">
      <link rel="stylesheet" href="css/font.css">
+     <link rel="stylesheet" href="style.css">
 </head>  
 <body class="flex items-center justify-center min-h-screen bg-gray-100">  
     <div class="flex w-[90%] max-w-xl h-fit bg-white shadow-md rounded-lg overflow-hidden">  
         <!-- بخش فرم ورود -->  
-        <div class="w-1/2 p-8 center flex-col gap-4">  
+        <div class="all w-1/2 p-8 center flex-col gap-4">  
+
+            <img class="img hidden" src="./logo/logo(green-transparent).png" alt="">
+
             <h2 class="text-2xl text-center mb-4 font-[morabba]">ورود به حساب کاربری</h2>  
             <form id="student-form">  
                 <div class="mb-4">  
@@ -33,11 +36,15 @@
                     <input type="text" id="username" name="username" required   
                            class="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-white"/>  
                 </div>  
-                <div class="mb-6">  
-                    <label for="password" class="block text-sm font-medium text-gray-700">رمز عبور</label>  
-                    <input type="password" id="password" name="password" required   
-                           class="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-white"/>  
+                <div class="mb-6 relative">
+                    <label for="password" class="block text-sm font-medium text-gray-700">رمز عبور</label>
+                    <div class="relative">
+                        <input type="password" id="password" name="password" required
+                               class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:bg-white active:bg-white bg-white pl-10"/>
+                        <i id="togglePassword" class="ri-eye-off-line absolute top-1/2 left-3 transform -translate-y-1/2 cursor-pointer text-gray-500"></i>
+                    </div>
                 </div>
+                
                 <div class="mb-6">
                     <label for="part" class="block text-sm font-medium text-gray-700">نقش</label>
                     <select onchange="redirectUser()" name="part" id="part" class="mt-1 w-full p-2 border border-gray-300 rounded-md bg-white" required>
@@ -47,13 +54,13 @@
                     </select>
                 </div>  
                 <button type="submit" onclick="redirectUser(event)"    
-                        class="w-full bg-[#87986A] hover:bg-[#4a5b2d] text-white font-semibold py-2 rounded-md">  
+                        class="w-full bg-[#87986A] hover:bg-[#4a5b2d] duration-300 text-white font-semibold py-2 rounded-md">  
                     <a href="" class="font-[peyda]">ورود</a> 
                 </button>  
             </form>  
         </div>  
         <!-- بخش لوگو -->  
-        <div class="flex flex-col items-center justify-center w-1/2 bg-[#87986A]">  
+        <div class="logo flex flex-col items-center justify-center w-1/2 bg-[#87986A]">  
             <img src="./logo/logo(transparent).png" alt="لوگو" class="w-3/4 h-auto"/> 
             <p class="text-black font-semibold font-[morabba]">ســمــا |  سامانه مدیریت آموزگار</p> 
         </div>
@@ -61,5 +68,26 @@
 
     <script src="./main.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const togglePassword = document.getElementById("togglePassword");
+    const passwordInput = document.getElementById("password");
+
+    if (togglePassword) {
+        togglePassword.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                this.classList.remove("ri-eye-off-line");
+                this.classList.add("ri-eye-line");
+            } else {
+                passwordInput.type = "password";
+                this.classList.remove("ri-eye-line");
+                this.classList.add("ri-eye-off-line");
+            }
+        });
+    }
+});
+
+    </script>
 </body>  
 </html>
